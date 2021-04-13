@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "defaultProvider": "unpkg",
+  "libraries": [
+    {
+      "library": "jquery-file-upload@4.0.11",
+      "destination": "Content/jquery-file-upload/",
+      "files": [
+        "css/uploadfile.css",
+        "css/uploadfile.custom.css"
+      ]
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "jquery.ui.widget@1.10.3",
+      "destination": "Scripts/jquery.ui.widget/",
+      "files": [
+        "jquery.ui.widget.min.js",
+        "package.json"
+      ]
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "jquery.iframe-transport@1.0.0",
+      "destination": "Scripts/jquery.iframe-transport/",
+      "files": [
+        "jquery.iframe-transport.min.js"
+      ]
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "jqueryui@1.11.1",
+      "destination": "Scripts/jqueryui/",
+      "files": [
+        "jquery-ui.min.js"
+      ]
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "blueimp-file-upload@10.31.0",
+      "destination": "Content/blueimp-file-upload/",
+      "files": [
+        "css/jquery.fileupload-noscript.min.css",
+        "css/jquery.fileupload-ui-noscript.min.css",
+        "css/jquery.fileupload-ui.min.css",
+        "css/jquery.fileupload.min.css",
+        "img/loading.gif",
+        "img/progressbar.gif"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>Upload</h2>
+
+@section styles {
+    <link href="~/Content/jquery-file-upload/css/uploadfile.css" rel="stylesheet" />
+    <link href="~/Content/jquery-file-upload/css/uploadfile.custom.css" rel="stylesheet" />
+    <style type="text/css">
+        .bar {
+            height: 18px;
+            background: green;
+        }
+    </style>
+}
+
+@section scripts {
+    <script src="~/Scripts/jquery-file-upload/blueimp-file-upload/js/vendor/jquery.ui.widget.min.js"></script>
+    <script src="~/Scripts/jquery-file-upload/blueimp-file-upload/js/jquery.iframe-transport.min.js"></script>
+    <script src="~/Scripts/jquery-file-upload/blueimp-file-upload/js/jquery.fileupload.min.js"></script>
+
+    <script type="text/javascript">
+        var videos = [];
+
+        $('#videoUpload').fileupload({
+            autoUpload: false,
+            singleFileUploads: false,
+            url: '/api/video',
+            change: function (e, data) {
+                $.each(data.files, function (index, file) {
+                    console.log('file: ' + file.name);
+                    videos.push(file);
+                });
+            },
+            done: function (e, data) {
+                console.log('is done');
+            },
+            fail: function (e, data) {
+                alert('is fail');
+            }
+        });
+
+        $('#save').click(function (e) {
+            e.preventDefault();
+            $('#videoUpload').fileupload('send', { files: videos })
+                .success(function (result, textStatus, jqXHR) {
+                    console.log(result.Status);
+                })
+                .error(function (jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(textStatus);
+                    console.log(errorThrown);
+                    console.log('上傳檔案失敗');
+                })
+                .complete(function (result, textStatus, jqXHR) {
+                    console.log('is complete.');
+                });
+        });
+    </script>
+}
+
+<input id="videoUpload" type="file" name="files" accept="video/*" multiple />
+<div id="progress">
+    <div class="bar" style="width: 0%;"></div>
+</div>
+<button id="save">上傳</button>
